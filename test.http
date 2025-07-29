@@ -1,0 +1,57 @@
+### Test POST endpoint with sample data
+POST http://localhost:3000/bfhl
+Content-Type: application/json
+
+{
+  "data": ["a", "1", "334", "4", "R", "$"]
+}
+
+###
+
+### Test POST endpoint with more complex data
+POST http://localhost:3000/bfhl
+Content-Type: application/json
+
+{
+  "data": ["M", "1", "334", "4", "B", "@", "z", "29", "#"]
+}
+
+###
+
+### Test POST endpoint with edge cases
+POST http://localhost:3000/bfhl
+Content-Type: application/json
+
+{
+  "data": ["0", "A", "!", "999", "x"]
+}
+
+###
+
+### Test GET endpoint
+GET http://localhost:3000/bfhl
+
+###
+
+### Test health check endpoint
+GET http://localhost:3000/
+
+###
+
+### Test error handling - invalid data
+POST http://localhost:3000/bfhl
+Content-Type: application/json
+
+{
+  "invalid": "data"
+}
+
+###
+
+### Test error handling - empty array
+POST http://localhost:3000/bfhl
+Content-Type: application/json
+
+{
+  "data": []
+}
