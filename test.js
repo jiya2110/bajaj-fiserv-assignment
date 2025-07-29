@@ -1,4 +1,4 @@
-// Simple test script to verify API functionality
+
 const axios = require('axios');
 
 const API_URL = 'http://localhost:3000/bfhl';
@@ -47,7 +47,6 @@ async function testAPI() {
     }
 }
 
-// Run test if axios is available, otherwise show manual test instructions
 try {
     require('axios');
     testAPI();
