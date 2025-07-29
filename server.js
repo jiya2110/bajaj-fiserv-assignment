@@ -10,11 +10,11 @@ const DOB = "21102004";
 const EMAIL = "jiya1723.be22@chitkara.edu.in";
 const ROLL_NUMBER = "2210991723";
 
-// Middleware
+
 app.use(cors());
 app.use(express.json());
 
-// Helper functions
+
 function isNumeric(str) {
     return /^\d+$/.test(str);
 }
@@ -33,7 +33,6 @@ function createAlternatingCapsReverse(alphabetChars) {
     let result = "";
     let shouldBeUpper = true;
 
-    // Reverse the order and apply alternating caps
     for (let i = alphabetChars.length - 1; i >= 0; i--) {
         const char = alphabetChars[i];
         if (shouldBeUpper) {
@@ -47,7 +46,7 @@ function createAlternatingCapsReverse(alphabetChars) {
     return result;
 }
 
-// POST endpoint for /bfhl
+
 app.post('/bfhl', (req, res) => {
     try {
         const { data } = req.body;
@@ -60,7 +59,7 @@ app.post('/bfhl', (req, res) => {
             });
         }
 
-        // Initialize arrays
+
         const evenNumbers = [];
         const oddNumbers = [];
         const alphabets = [];
@@ -69,7 +68,7 @@ app.post('/bfhl', (req, res) => {
 
         let sum = 0;
 
-        // Process each element in the data array
+  
         data.forEach(item => {
             const itemStr = String(item);
 
@@ -90,10 +89,9 @@ app.post('/bfhl', (req, res) => {
             }
         });
 
-        // Create concatenation string with alternating caps in reverse order
         const concatString = createAlternatingCapsReverse(alphabetChars);
 
-        // Build response
+
         const response = {
             is_success: true,
             user_id: `${FULL_NAME.toLowerCase()}_${DOB}`,
@@ -119,14 +117,13 @@ app.post('/bfhl', (req, res) => {
     }
 });
 
-// GET endpoint for /bfhl (optional, for testing)
+
 app.get('/bfhl', (req, res) => {
     res.status(200).json({
         operation_code: 1
     });
 });
 
-// Health check endpoint
 app.get('/', (req, res) => {
     res.json({
         message: "Bajaj Finserv Assignment API is running!",
@@ -137,7 +134,7 @@ app.get('/', (req, res) => {
     });
 });
 
-// Start server
+
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on port ${PORT}`);
     console.log(`📡 API endpoint: http://localhost:${PORT}/bfhl`);
